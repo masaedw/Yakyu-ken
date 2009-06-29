@@ -9,6 +9,10 @@
 
 #import <UIKit/UIKit.h>
 
+#define GU 0
+#define TY 1
+#define PA 2
+
 @interface Yakyu_kenViewController : UIViewController {
 	IBOutlet UIButton *btn_g;
 	IBOutlet UIButton *btn_t;
@@ -22,6 +26,8 @@
 	IBOutlet UIImageView *lose;
 	IBOutlet UIImageView *ready;
 	IBOutlet UIImageView *even;
+	NSString *s_gtp[3];
+	UIButton *b_gtp[3];
 }
 
 @property(nonatomic,retain) UIButton *btn_g;
@@ -41,6 +47,11 @@
 -(IBAction) btn_t_down:(id) sender;
 -(IBAction) btn_p_down:(id) sender;
 -(IBAction) btn_restart_down:(id) sender;
+
+-(void) janken:(NSInteger) gtp;
+-(void) j_aiko;
+-(void) j_win:(NSInteger) gtp;
+-(void) j_lose:(NSInteger) gtp;
 
 @end
 

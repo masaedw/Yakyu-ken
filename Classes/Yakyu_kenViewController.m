@@ -21,183 +21,105 @@
 	self.btn_t.enabled = YES;
 	self.btn_p.hidden = NO;
 	self.btn_p.enabled = YES;
+	self.btn_restart.hidden = YES;
 	self.aftertitle.hidden = YES;
 	self.rslt.text = @"";
 	self.other.text = @"";
-	self.win.hidden = YES; 
-	self.lose.hidden = YES; 
-	self.ready.hidden = NO; 
-	self.even.hidden = YES; 	
+	self.win.hidden = YES;
+	self.lose.hidden = YES;
+	self.ready.hidden = NO;
+	self.even.hidden = YES;
 }
 
 // ぐー
 -(IBAction) btn_g_down:(id) sender {
-	self.aftertitle.hidden = NO;
-	
-	srand(time(nil));
-	NSInteger result;
-	result = rand()% 3;
-	if(result==0) {
-		self.other.text = @"ぐー";
-	} else if(result==1) {
-		self.other.text = @"ちょき";
-	} else if(result==2) {
-		self.other.text = @"ぱー";
-	}
-	
-	if(result==0) {
-		self.rslt.text = @"あいこで...";
-		self.btn_g.hidden = NO;
-		self.btn_t.hidden = NO;
-		self.btn_p.hidden = NO;
-		self.btn_restart.hidden = YES;
-		self.btn_restart.enabled = NO;
-		self.win.hidden = YES; 
-		self.lose.hidden = YES; 
-		self.ready.hidden = YES; 
-		self.even.hidden = NO; 
-	} else if(result==1) {
-		self.rslt.text = @"You Win!";
-		self.btn_g.hidden = NO;
-		self.btn_g.enabled = NO;
-		self.btn_t.hidden = YES;
-		self.btn_p.hidden = YES;
-		self.btn_restart.hidden = NO;
-		self.btn_restart.enabled = YES;
-		self.win.hidden = NO; 
-		self.lose.hidden = YES; 
-		self.ready.hidden = YES; 		
-		self.even.hidden = YES;
-	} else {
-		self.rslt.text = @"You Lose!";
-		self.btn_g.hidden = NO;
-		self.btn_g.enabled = NO;
-		self.btn_t.hidden = YES;
-		self.btn_p.hidden = YES;	
-		self.btn_restart.hidden = NO;
-		self.btn_restart.enabled = YES;
-		self.win.hidden = YES; 
-		self.lose.hidden = NO; 
-		self.ready.hidden = YES; 	
-		self.even.hidden = YES;
-	}
+	[self janken:GU];
 }
 
 // ちょき
 -(IBAction) btn_t_down:(id) sender {
-	self.aftertitle.hidden = NO;
-	
-	srand(time(nil));
-	NSInteger result;
-	result = rand()% 3;
-	if(result==0) {
-		self.other.text = @"ちょき";
-	} else if(result==1) {
-		self.other.text = @"ぱー";
-	} else if(result==2) {
-		self.other.text = @"ぐー";
-	}
-	
-	if(result==0) {
-		self.rslt.text = @"あいこで...";
-		self.btn_g.hidden = NO;
-		self.btn_t.hidden = NO;
-		self.btn_p.hidden = NO;
-		self.btn_restart.hidden = YES;
-		self.win.hidden = YES; 
-		self.lose.hidden = YES; 
-		self.ready.hidden = YES; 
-		self.even.hidden = NO; 
-	} else if(result==1) {
-		self.rslt.text = @"You Win!";
-		self.btn_t.hidden = NO;
-		self.btn_t.enabled = NO;
-		self.btn_g.hidden = YES;
-		self.btn_p.hidden = YES;
-		self.btn_restart.hidden = NO;
-		self.btn_restart.enabled = YES;
-		self.win.hidden = NO; 
-		self.lose.hidden = YES; 
-		self.ready.hidden = YES; 		
-		self.even.hidden = YES; 
-	} else {
-		self.rslt.text = @"You Lose!";
-		self.btn_t.hidden = NO;
-		self.btn_t.enabled = NO;
-		self.btn_g.hidden = YES;
-		self.btn_p.hidden = YES;	
-		self.btn_restart.hidden = NO;
-		self.btn_restart.enabled = YES;
-		self.win.hidden = YES; 
-		self.lose.hidden = NO; 
-		self.ready.hidden = YES; 		
-		self.even.hidden = YES;
-	}
+	[self janken:TY];
 }
 
 // ぱー
 -(IBAction) btn_p_down:(id) sender {
+	[self janken:PA];
+}
+
+-(void) janken: (NSInteger) gtp {
 	self.aftertitle.hidden = NO;
-	
-	srand(time(nil));
-	NSInteger result;
-	result = rand()% 3;
-	if(result==0) {
-		self.other.text = @"ぱー";
-	} else if(result==1) {
-		self.other.text = @"ぐー";
-	} else if(result==2) {
-		self.other.text = @"ちょき";
-	}
-	
-	if(result==0) {
-		self.rslt.text = @"あいこで...";
-		self.btn_p.hidden = NO;
-		self.btn_t.hidden = NO;
-		self.btn_g.hidden = NO;
-		self.btn_restart.hidden = YES;
-		self.win.hidden = YES; 
-		self.lose.hidden = YES; 
-		self.ready.hidden = YES; 
-		self.even.hidden = NO; 
-	} else if(result==1) {
-		self.rslt.text = @"You Win!";
-		self.btn_p.hidden = NO;
-		self.btn_p.enabled = NO;
-		self.btn_t.hidden = YES;
-		self.btn_g.hidden = YES;
-		self.btn_restart.hidden = NO;
-		self.btn_restart.enabled = YES;
-		self.win.hidden = NO; 
-		self.lose.hidden = YES; 
-		self.ready.hidden = YES; 		
-		self.even.hidden = YES;
-	} else {
-		self.rslt.text = @"You Lose!";
-		self.btn_p.hidden = NO;
-		self.btn_p.enabled = NO;
-		self.btn_t.hidden = YES;
-		self.btn_g.hidden = YES;	
-		self.btn_restart.hidden = NO;
-		self.btn_restart.enabled = YES;
-		self.win.hidden = YES; 
-		self.lose.hidden = NO; 
-		self.ready.hidden = YES; 		
-		self.even.hidden = YES;
+	NSInteger result = random() % 3;
+	switch (result) {
+		case 0:
+			[self j_aiko];
+			break;
+		case 1:
+			[self j_win:gtp];
+			break;
+		case 2:
+			[self j_lose:gtp];
+			break;
 	}
 }
 
+-(void) j_aiko {
+	self.rslt.text = @"あいこで...";
+	self.btn_g.hidden = NO;
+	self.btn_t.hidden = NO;
+	self.btn_p.hidden = NO;
+	self.btn_g.enabled = YES;
+	self.btn_t.enabled = YES;
+	self.btn_p.enabled = YES;
+	self.btn_restart.hidden = YES;
+	self.win.hidden = YES;
+	self.lose.hidden = YES;
+	self.ready.hidden = YES;
+	self.even.hidden = NO;
+}
 
+-(void) j_win: (NSInteger) gtp {
+	self.rslt.text = @"You Win!";
+	self.other.text = s_gtp[(gtp+1)%3];
 
-/*
-// The designated initializer. Override to perform setup that is required before the view is loaded.
+	for (NSInteger i = 0; i < 3; i++) {
+		b_gtp[i].hidden = (i == gtp) ? NO : YES;
+		b_gtp[i].enabled = NO;
+	}
+
+	self.btn_restart.hidden = NO;
+	self.btn_restart.enabled = YES;
+	self.win.hidden = NO; 
+	self.lose.hidden = YES; 
+	self.ready.hidden = YES; 		
+	self.even.hidden = YES;
+}
+
+-(void) j_lose: (NSInteger) gtp {
+	self.rslt.text = @"You Lose!";
+	self.other.text = s_gtp[(gtp+2)%3];
+
+	for (NSInteger i = 0; i < 3; i++) {
+		b_gtp[i].hidden = (i == gtp) ? NO : YES;
+		b_gtp[i].enabled = NO;
+	}
+
+	self.btn_restart.hidden = NO;
+	self.btn_restart.enabled = YES;
+	self.win.hidden = YES;
+	self.lose.hidden = NO;
+	self.ready.hidden = YES;
+	self.even.hidden = YES;
+}
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
-    if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
-        // Custom initialization
-    }
-    return self;
+	if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
+		srandom(time(nil));
+		s_gtp[GU] = @"ぐー";
+		s_gtp[TY] = @"ちょき";
+		s_gtp[PA] = @"ぱー";
+	}
+	return self;
 }
-*/
 
 /*
 // Implement loadView to create a view hierarchy programmatically, without using a nib.
@@ -223,6 +145,10 @@
 	self.lose.hidden = YES;
 	self.ready.hidden = NO;
 	self.even.hidden = YES;
+
+	b_gtp[GU] = btn_g;
+	b_gtp[TY] = btn_t;
+	b_gtp[PA] = btn_p;
 }
 
 
@@ -261,6 +187,9 @@
 	[lose release];
 	[ready release];
 	[even release];
+	[s_gtp[GU] release];
+	[s_gtp[TY] release];
+	[s_gtp[PA] release];
 	[super dealloc];
 }
 
